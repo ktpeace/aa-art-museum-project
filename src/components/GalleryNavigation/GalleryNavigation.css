@@ -1,0 +1,21 @@
+.home-link {
+  margin-right: 20px;
+}
+
+.active {
+  font-weight: bold;
+}
+
+nav {
+  display: flex;
+  max-width: 95%;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+
+.gallery {
+  flex-grow: 1;
+  width: calc();
+  margin-bottom: 20px;
+  min-width: 190px;
+}

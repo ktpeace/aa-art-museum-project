@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route, Routes } from "react-router-dom";
+import harvardArt from "./data/harvardArt";
+import Home from "./home";
+import GalleryNavigation from "./components/GalleryNavigation";
+import GalleryView from "./components/GalleryView";
+import NotFound from "./NotFound";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <>
+      <GalleryNavigation galleries={harvardArt} />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route
+          path="/galleries/:galleryId/*"
+          element={<GalleryView galleries={harvardArt.records} />}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
+          <Route
+            path="art/:artId"
+            element={<GalleryView galleries={harvardArt.records} />}
+          />
+        </Route>
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </>
   );
 }
 
